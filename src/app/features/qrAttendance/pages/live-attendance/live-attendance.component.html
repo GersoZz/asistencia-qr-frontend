@@ -1,1 +1,32 @@
-<p>live-attendance works!</p>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title> Asistencia en Vivo </title>
+        <link rel="stylesheet" href="live-attendance.component.css">
+    </head>
+    <body>
+        <div class="page-title">
+            <h1>Asistencia UNI</h1>
+        </div>
+        
+        <div class="content"> 
+            
+            <div class="item-container" *ngFor="let registro of registros">
+                <span class="student-name">{{ registro.nombre }}</span>
+                <div class="switch-container">
+                    <input type="checkbox"
+                    [checked]="registro.asistencia === 'si'" 
+                    (change)="updateAsistencia(registro, $event)">
+                    
+                </div>
+            </div>
+            <div class="total">
+                total : {{ getAsistencias() }}/{{ registros.length }}
+              </div>
+            <button class="show-button">
+                Mostrar QR
+            </button>
+        </div>
+        
+    </body>
+</html>
