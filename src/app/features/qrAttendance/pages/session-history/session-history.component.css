@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #f4f4f4;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  text-align: center;
+  width: 90%;
+  max-width: 600px;
+}
+
+.back-button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #3164f4;
+}
+
+h1 {
+  color: #3164f4;
+  font-size: 2vw;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.attendance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.attendance-table th,
+.attendance-table td {
+  border: 1px solid #3164f4;
+  padding: 10px;
+  text-align: left;
+}
+
+.attendance-table th {
+  background-color: #3164f4;
+  color: #fff;
+}
+
+.attendance-table td {
+  background-color: #fff;
+  color: #333;
+}
+
+.summary p {
+  font-size: 1.5vw;
+  color: #3164f4;
+  margin: 5px 0;
+}
