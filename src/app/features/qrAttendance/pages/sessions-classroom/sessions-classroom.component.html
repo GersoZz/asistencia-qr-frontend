@@ -1,45 +1,33 @@
-<!DOCTYPE html>
-<html>
+<div class="page-title">
+    <h1>Asistencia UNI</h1>
+</div>
 
-<head>
-    <title> Asistencia UNI </title>
-    <link rel="stylesheet" href="sessions-classroom.component.css">
-</head>
-
-<body>
-    <div class="page-title">
-        <h1>Asistencia UNI</h1>
-    </div>
-
-    <div class="content">
-        <button class="estadisticas-container">
-            <img src="../../../../../assets/01.png" alt="Estadísticas">
-            <div class="page-subtitle">
-                <h2>Estadísticas</h2>
-            </div>
-        </button>
+<div class="content">
+    <button class="estadisticas-container">
+        <img src="images/stats.png" alt="Estadísticas">
         <div class="page-subtitle">
-            <h2>Sesiones</h2>
+            <h2>Estadísticas</h2>
         </div>
-        <div class="buttons-container">
-            <button *ngFor="let sesion of sesiones" [class.session-button-a]="sesion.tipo === 'A'"
-                [class.session-button-b]="sesion.tipo === 'B'" [class.session-button-c]="sesion.tipo === 'C'"
-                [class.session-button-d]="sesion.tipo === 'D'" [disabled]="sesion.tipo === 'D'"
-                (click)="sesion.tipo === 'C' ? abrirModal() : null">
-                {{ sesion.nombre }} - {{ sesion.fecha }}
-            </button>
+    </button>
+    <div class="page-subtitle">
+        <h2>Sesiones</h2>
+    </div>
+    <div class="buttons-container">
+        <button *ngFor="let sesion of sesiones" [class.session-button-a]="sesion.tipo === 'A'"
+            [class.session-button-b]="sesion.tipo === 'B'" [class.session-button-c]="sesion.tipo === 'C'"
+            [class.session-button-d]="sesion.tipo === 'D'" [disabled]="sesion.tipo === 'D'"
+            (click)="sesion.tipo === 'C' ? abrirModal() : null">
+            {{ sesion.nombre }} - {{ sesion.fecha }}
+        </button>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal-content">
+        <h2>¿Desea recuperar la clase en este momento?</h2>
+        <div class="modal-buttons">
+            <button>Sí</button>
+            <button (click)="cerrarModal()">No</button>
         </div>
     </div>
-
-    <div class="modal-overlay" *ngIf="mostrarModal">
-        <div class="modal-content">
-            <h2>¿Desea recuperar la clase en este momento?</h2>
-            <div class="modal-buttons">
-                <button>Sí</button>
-                <button (click)="cerrarModal()">No</button>
-            </div>
-        </div>
-    </div>
-</body>
-
-</html>
+</div>
