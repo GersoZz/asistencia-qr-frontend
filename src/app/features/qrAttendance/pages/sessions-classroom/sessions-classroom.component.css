@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter';
+    background-color: white;
+}
+
+.page-title{
+    font-size: clamp(16px, 3vw, 32px);;
+    color: #3164f4;
+    text-align: center;
+    margin-top: 10vh;
+}
+
+
+
+.content{
+    margin-top: 5vh;
+    flex-grow: 1;
+    overflow: auto;
+    margin-left: clamp(16px, 7vh, 32px);
+    margin-right:clamp(16px, 7vh, 32px);
+    align-items: center;
+}
+
+
+.page-subtitle{
+    font-size: clamp(16px, 2vw, 24px);
+    color: black;
+    text-align: left;
+}
+
+.estadisticas-container {
+    background: none; 
+    border: none; 
+    cursor: pointer; 
+    display: flex; 
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    margin: 10px auto; 
+    width: 150px; 
+    text-align: center; 
+}
+  
+.estadisticas-container img {
+    width: 80px; 
+    height: auto; 
+    margin-bottom: 5px; 
+}
+  
+.buttons-container{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3vh;
+    flex-grow: 1;
+    overflow: auto;
+    margin-left: 1.2vh;
+    margin-right: 1.2vh;
+    align-items: center;
+}
+
+
+
+.session-button-a{
+    color: black; 
+    border: 2px solid #3164F4; 
+    border-radius: 10px; 
+    padding: 10px 20px;
+    margin: 1vh; 
+    font-size: clamp(13px, 3vw, 30px);  
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+    width: clamp(250px, 70%, 600px); 
+    background-color: #D2EBFF;
+    
+}
+
+.session-button-b{ 
+    color: black; 
+    border: 2px solid #3164F4; 
+    border-radius: 10px; 
+    padding: 10px 20px;
+    margin: 1vh; 
+    font-size: clamp(13px, 3vw, 30px); 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+    width: clamp(250px, 70%, 600px); 
+    background-color: #DEFFC1;
+    
+}
+
+.session-button-c{
+    color: black; 
+    border: 2px solid #3164F4; 
+    border-radius: 10px; 
+    padding: 10px 20px;
+    margin: 1vh; 
+    font-size:clamp(13px, 3vw, 30px); 
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+    width: clamp(250px, 70%, 600px); 
+    background-color: #FECFCF;;
+    
+}
+
+.session-button-d{
+    color: black; 
+    border: 2px solid #3164F4; 
+    border-radius: 10px; 
+    padding: 10px 20px;
+    margin: 1vh; 
+    font-size: clamp(13px, 3vw, 30px);  
+    cursor: pointer; 
+    transition: background-color 0.3s, transform 0.3s; 
+    width: clamp(250px, 70%, 600px); 
+    background-color: #ffffff;
+    cursor: not-allowed; 
+    pointer-events: none; 
+    opacity: 0.6; /
+    
+}
+
+button:hover {
+    transform: scale(1.05); 
+}
+
+button:active {
+    transform: scale(0.95); 
+}
+
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; 
+  }
+  
+  .modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 80%;
+    max-width: 400px;
+  }
+  
+  .modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-around;
+  }
+  
+  .modal-buttons button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-buttons button:first-child {
+    background-color: #3164f4; 
+    color: white;
+  }
+  
+  .modal-buttons button:first-child:hover {
+    background-color: #254cad; 
+  }
+  
+  .modal-buttons button:last-child {
+    background-color: #3164f4; 
+    color: white;
+  }
+  
+  .modal-buttons button:last-child:hover {
+    background-color: #254cad; 
+  }
+  
