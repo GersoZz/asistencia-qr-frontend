@@ -6,13 +6,12 @@ html {
   padding: 0;
   height: 100%;
   font-family: 'Inter', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #fff;
   color: #333;
 }
 
 h1 {
   color: #3164f4;
-  font-size: 2.5vw;
   font-weight: 600;
   margin-bottom: 20px;
   text-align: center;

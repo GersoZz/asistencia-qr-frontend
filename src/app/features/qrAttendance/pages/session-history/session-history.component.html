@@ -17,44 +17,17 @@
             <th>Presente</th>
           </tr>
         </thead>
-        <tbody>
-          <tr>
-            <td>Nombre de estudiante 1</td>
-            <td>Sí</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 2</td>
-            <td>No</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 3</td>
-            <td>Sí</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 4</td>
-            <td>Sí</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 5</td>
-            <td>Sí</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 6</td>
-            <td>Sí</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 7</td>
-            <td>Sí</td>
-          </tr>
-          <tr>
-            <td>Nombre de estudiante 8</td>
-            <td>Sí</td>
-          </tr>
-        </tbody>
+        <tr *ngFor="let registro of registros">
+          <td>a</td>
+          <td>{{ registro.asistencia }}</td>
+        </tr>
       </table>
+
       <div class="summary">
-        <p>total : 7/8</p>
-        <p>Fecha : 9/10/2024</p>
+        <span>Total: </span>
+        <!--{{ getAsistencias() }} / {{ registros.length }} -->
+        <span>Fecha: </span>
+        <!-- {{ registro.fecha }} -->
       </div>
     </div>
   </body>

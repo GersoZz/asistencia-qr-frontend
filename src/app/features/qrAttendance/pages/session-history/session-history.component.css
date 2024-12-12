@@ -6,7 +6,7 @@ html {
   padding: 0;
   height: 100%;
   font-family: 'Inter', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #fff;
   color: #333;
   display: flex;
   justify-content: center;
@@ -14,9 +14,14 @@ html {
 }
 
 .container {
-  text-align: center;
-  width: 90%;
-  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+  flex-grow: 1;
+  overflow: auto;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  align-items: center;
 }
 
 .back-button {
@@ -28,37 +33,35 @@ html {
 }
 
 h1 {
+  font-size: clamp(16px, 3vw, 32px);
   color: #3164f4;
-  font-size: 2vw;
-  font-weight: 600;
-  margin-bottom: 20px;
+  text-align: center;
+  margin-top: 8vh;
 }
 
 .attendance-table {
+  border: 2px solid #3164f4;
+  border-radius: 10px;
+  width: clamp(285px, 45vw, 700px);
+}
+
+table {
   width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
 }
 
 .attendance-table th,
 .attendance-table td {
-  border: 1px solid #3164f4;
-  padding: 10px;
-  text-align: left;
-}
-
-.attendance-table th {
-  background-color: #3164f4;
-  color: #fff;
-}
-
-.attendance-table td {
-  background-color: #fff;
-  color: #333;
+  text-align: center;
+  vertical-align: middle;
 }
 
 .summary p {
-  font-size: 1.5vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3vh;
+  font-size: clamp(18px, 2vw, 25px);
   color: #3164f4;
-  margin: 5px 0;
+  font-weight: 600;
+  width: clamp(250px, 30vw, 380px);
 }

@@ -6,7 +6,7 @@ html {
   padding: 0;
   height: 100%;
   font-family: 'Inter', sans-serif;
-  background-color: #f4f4f4;
+  background-color: #fff;
   color: #333;
   display: flex;
   justify-content: center;
@@ -19,9 +19,10 @@ html {
 
 h1 {
   color: #3164f4;
-  font-size: 2.5vw;
+  font-size: 30px;
   font-weight: 600;
   margin-bottom: 20px;
+  display: flex;
 }
 
 .logo {
@@ -31,7 +32,7 @@ h1 {
 
 h2 {
   color: #000;
-  font-size: 2vw;
+  font-size: 24px;
   font-weight: 600;
   margin-bottom: 20px;
 }
