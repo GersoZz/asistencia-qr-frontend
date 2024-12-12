@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title> Asistencia UNI </title>
-        <link rel="stylesheet" href="classrooms.component.css">
-    </head>
-    <body>
-        <div class="page-title">
-            <h1>Asistencia UNI</h1>
+
+<head>
+    <title> Asistencia UNI </title>
+    <link rel="stylesheet" href="classrooms.component.css">
+</head>
+
+<body>
+    <div class="page-title">
+        <h1>Asistencia UNI</h1>
+    </div>
+
+    <div class="content">
+        <div class="page-subtitle">
+            <h2>Cursos</h2>
         </div>
-        
-        <div class="content"> 
-            <div class="page-subtitle">
-                <h2>Cursos</h2>
-            </div>
-            <div class="buttons-container">
-                <button *ngFor="let curso of cursos" class="course-button">{{ curso }}</button>
-                
-            </div>
+        <div class="buttons-container">
+            <button *ngFor="let curso of cursos" class="course-button">{{ curso }}</button>
+
         </div>
-        
-    </body>
+    </div>
+
+</body>
+
 </html>

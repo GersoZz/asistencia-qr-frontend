@@ -1,4 +1,4 @@
-import { Routes } from '@angular/router';
+import { Routes } from '@angular/router'
 import { ClassroomsComponent } from './pages/classrooms/classrooms.component'
 import { StudentMenuComponent } from './pages/student-menu/student-menu.component'
 import { ScannerComponent } from './pages/scanner/scanner.component'
@@ -18,4 +18,3 @@ export const QR_ATTENDANCE_ROUTES: Routes = [
   { path: 'cursos/:idCurso/sesiones/:idSesion/registro', component: LiveAttendanceComponent },
   { path: 'cursos/:idCurso/sesiones/:idSesion', component: SessionHistoryComponent },
 ]
-

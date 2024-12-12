@@ -1,29 +1,29 @@
-import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common'
+import { Component } from '@angular/core'
 
 @Component({
   selector: 'app-live-attendance',
   standalone: true,
   imports: [CommonModule],
   templateUrl: './live-attendance.component.html',
-  styleUrl: './live-attendance.component.css'
+  styleUrl: './live-attendance.component.css',
 })
 export class LiveAttendanceComponent {
   registros = [
-    { nombre: "Ariana Camila Lopez Julcarima", asistencia: "no" },
-    { nombre: "Mateo Torres", asistencia: "si" },
-    { nombre: "Benjamin Seminario", asistencia: "no" },
-    { nombre: "Gerson Zuñiga", asistencia: "no" },
-    { nombre: "Jhiens Guerrero", asistencia: "no" },
-    { nombre: "Leonardo Chacon", asistencia: "no" }
-  ];
+    { nombre: 'Ariana Camila Lopez Julcarima', asistencia: 'no' },
+    { nombre: 'Mateo Torres', asistencia: 'si' },
+    { nombre: 'Benjamin Seminario', asistencia: 'no' },
+    { nombre: 'Gerson Zuñiga', asistencia: 'no' },
+    { nombre: 'Jhiens Guerrero', asistencia: 'no' },
+    { nombre: 'Leonardo Chacon', asistencia: 'no' },
+  ]
 
   getAsistencias(): number {
-    return this.registros.filter(registro => registro.asistencia === 'si').length;
+    return this.registros.filter((registro) => registro.asistencia === 'si').length
   }
 
   updateAsistencia(registro: any, event: Event) {
-    const isChecked = (event.target as HTMLInputElement).checked;
-    registro.asistencia = isChecked ? 'si' : 'no';
+    const isChecked = (event.target as HTMLInputElement).checked
+    registro.asistencia = isChecked ? 'si' : 'no'
   }
 }

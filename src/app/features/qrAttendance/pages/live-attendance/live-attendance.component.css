@@ -1,110 +1,109 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
 
-body, html {
-    margin: 0;
-    padding: 0;
-    font-family: 'Inter', sans-serif;
-    background-color: white;
+body,
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: white;
 }
 
 .page-title {
-    font-size: clamp(20px, 3vw, 32px);
-    color: #3164f4;
-    text-align: center;
-    margin-top: 10vh;
+  font-size: clamp(20px, 3vw, 32px);
+  color: #3164f4;
+  text-align: center;
+  margin-top: 10vh;
 }
 
 .content {
-    margin-top: 5vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .item-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: clamp(340px, 30vw, 400px);
-    padding: 10px;
-    margin-top: 0.1vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: clamp(340px, 30vw, 400px);
+  padding: 10px;
+  margin-top: 0.1vh;
 }
 
 .student-name {
-    font-size: clamp(16px, 1vw, 20px);
-    color: #333;
-    padding: 5px 10px;
-    border: 2px solid #3164f4;
-    width: clamp(250px, 28vw, 300px);
-    border-radius: 10px;
+  font-size: clamp(16px, 1vw, 20px);
+  color: #333;
+  padding: 5px 10px;
+  border: 2px solid #3164f4;
+  width: clamp(250px, 28vw, 300px);
+  border-radius: 10px;
 }
 
 .switch-container {
-    position: relative;
+  position: relative;
 }
 
-
-input[type="checkbox"] {
-    width: 50px;
-    height: 24px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: #b0b3e4;
-    outline: none;
-    border-radius: 12px;
-    position: relative;
-    transition: 0.4s;
-    box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
+input[type='checkbox'] {
+  width: 50px;
+  height: 24px;
+  -webkit-appearance: none;
+  appearance: none;
+  background: #b0b3e4;
+  outline: none;
+  border-radius: 12px;
+  position: relative;
+  transition: 0.4s;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
 }
 
-input:checked[type="checkbox"] {
-    background: #3164f4;
+input:checked[type='checkbox'] {
+  background: #3164f4;
 }
 
-input[type="checkbox"]::before {
-    content: '';
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border-radius: 80%;
-    background: #fff;
-    top: 2px;
-    left: 2px;
-    transition: 0.4s;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+input[type='checkbox']::before {
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  border-radius: 80%;
+  background: #fff;
+  top: 2px;
+  left: 2px;
+  transition: 0.4s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 
-input:checked[type="checkbox"]::before {
-    left: 28px;
+input:checked[type='checkbox']::before {
+  left: 28px;
 }
 
-.show-button{
-    background-color:#3164F4; 
-    color: white; 
-    border: 2px solid #ffffff; 
-    border-radius: 10px; 
-    padding: 10px 20px;
-    margin: 1vh; 
-    margin-top: 3vh;
-    font-size: clamp(20px, 4vw, 35px);
-    cursor: pointer; 
-    transition: background-color 0.3s, transform 0.3s; 
-    width: clamp(340px, 30vw, 400px); 
-    
+.show-button {
+  background-color: #3164f4;
+  color: white;
+  border: 2px solid #ffffff;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 1vh;
+  margin-top: 3vh;
+  font-size: clamp(20px, 4vw, 35px);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: clamp(340px, 30vw, 400px);
 }
 
 button:hover {
-    transform: scale(1.05); 
+  transform: scale(1.05);
 }
 
 button:active {
-    transform: scale(0.95); 
+  transform: scale(0.95);
 }
 
 .total {
-    margin-top: 3vh;
-    font-size: clamp(18px, 2vw, 25px);
-    color: #3164f4; 
-    font-weight: 600; 
-    text-align: center; 
-  }
+  margin-top: 3vh;
+  font-size: clamp(18px, 2vw, 25px);
+  color: #3164f4;
+  font-weight: 600;
+  text-align: center;
+}
