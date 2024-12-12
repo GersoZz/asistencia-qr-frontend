@@ -32,13 +32,16 @@ export class ValidateLoginComponent implements OnInit {
         // Redirige según el rol que tenga el usuario
         if (role === 'STUDENT') {
           this.router.navigate(['/menu'])
-        } else if (role === 'PROFESSOR') {
-          this.router.navigate(['/cursos'])
-        } else {
-          // Manejo de casos inesperados, por ejemplo, un error o estado no válido
-          console.error('Invalid response from backend:', response)
-          // muestra un pop up de error con boton a login
+          return
         }
+
+        if (role === 'PROFESSOR') {
+          this.router.navigate(['/cursos'])
+          return
+        }
+        // Manejo de casos inesperados, por ejemplo, un error o estado no válido
+        console.error('Invalid response from backend:', response)
+        // muestra un pop up de error con boton a login
       },
       error: (error) => {
         console.error('Error during login:', error)

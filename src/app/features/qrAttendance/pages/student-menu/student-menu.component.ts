@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { RouterLinkWithHref } from '@angular/router'
 
 @Component({
   selector: 'app-student-menu',
   standalone: true,
-  imports: [],
+  imports: [RouterLinkWithHref],
   templateUrl: './student-menu.component.html',
-  styleUrl: './student-menu.component.css'
+  styleUrl: './student-menu.component.css',
 })
-export class StudentMenuComponent {
-
-}
+export class StudentMenuComponent {}

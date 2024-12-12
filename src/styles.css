@@ -8,3 +8,10 @@ html {
   font-family: 'Inter';
   background-color: white;
 }
+
+.arrow-left {
+  margin-left: 50px;
+  margin-top: 50px;
+  width: 40px;
+  height: 40px;
+}

@@ -1,10 +1,12 @@
+<a routerLink="../../"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+
 <div class="page-title">
     <h1>Asistencia UNI</h1>
 </div>
 
 <div class="content">
     <button class="estadisticas-container">
-        <img src="images/stats.png" alt="Estadísticas">
+        <a routerLink="../"><img src="images/stats.png" alt="Estadísticas"></a>
         <div class="page-subtitle">
             <h2>Estadísticas</h2>
         </div>
@@ -16,7 +18,7 @@
         <button *ngFor="let sesion of sesiones" [class.session-button-a]="sesion.tipo === 'A'"
             [class.session-button-b]="sesion.tipo === 'B'" [class.session-button-c]="sesion.tipo === 'C'"
             [class.session-button-d]="sesion.tipo === 'D'" [disabled]="sesion.tipo === 'D'"
-            (click)="sesion.tipo === 'C' ? abrirModal() : null">
+            (click)="handleRedirect(sesion.id, sesion.tipo)">
             {{ sesion.nombre }} - {{ sesion.fecha }}
         </button>
     </div>
@@ -26,7 +28,7 @@
     <div class="modal-content">
         <h2>¿Desea recuperar la clase en este momento?</h2>
         <div class="modal-buttons">
-            <button>Sí</button>
+            <button (click)="recoverSession()">Sí</button>
             <button (click)="cerrarModal()">No</button>
         </div>
     </div>

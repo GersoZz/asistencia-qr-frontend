@@ -1,10 +1,11 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
+import { RouterLinkWithHref } from '@angular/router'
 
 @Component({
   selector: 'app-live-attendance',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLinkWithHref],
   templateUrl: './live-attendance.component.html',
   styleUrl: './live-attendance.component.css',
 })
