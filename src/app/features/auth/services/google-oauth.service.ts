@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc'
 import { environment } from '@envs/environment'
+import { AuthResponseDTO } from 'src/app/core/models/authDTO.interface'
 
 @Injectable({
   providedIn: 'root',
@@ -57,6 +58,6 @@ export class GoogleOauthService {
     })
 
     console.log('🚀 ~ environment.API_URL:', environment.API_URL)
-    return this.http.get(`${environment.API_URL}/auth/g-oauth`, { headers })
+    return this.http.get<AuthResponseDTO>(`${environment.API_URL}/auth/g-oauth`, { headers })
   }
 }
