@@ -9,9 +9,9 @@
     <h2>Cursos</h2>
   </div>
   <div class="buttons-container">
-    <a *ngFor="let curso of cursos" [style.width.%]="80"
-      [routerLink]="role === 'PROFESSOR' ? curso.id+'/sesiones' : '/cursos/'+curso.id">
-      <button class="course-button">{{ curso.name }}</button>
+    <a *ngFor="let section of sections" [style.width.%]="80"
+      [routerLink]="role === 'PROFESSOR' ? section.sectionId+'/sesiones' : '/cursos/'+section.sectionId">
+      <button class="course-button">{{ section.courseName +" - " + section.codSection }}</button>
     </a>
   </div>
 </div>

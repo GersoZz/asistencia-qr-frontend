@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common'
-import { Component } from '@angular/core'
+import { Component, OnInit } from '@angular/core'
 import { Router, RouterLinkWithHref } from '@angular/router'
+import { sectionDTO } from 'src/app/core/models/info.interface'
+import { userInfo } from 'src/app/core/models/userPayload.interface'
+import { InfoService } from 'src/app/core/services/info.service'
 import { TokenService } from 'src/app/core/services/token.service'
 
 @Component({
@@ -10,17 +13,21 @@ import { TokenService } from 'src/app/core/services/token.service'
   templateUrl: './classrooms.component.html',
   styleUrl: './classrooms.component.css',
 })
-export class ClassroomsComponent {
+export class ClassroomsComponent implements OnInit {
   role: string | undefined = ''
+  userInfo: userInfo | null = null
+  sections: sectionDTO[] = []
 
-  cursos = [
-    { name: 'Ingeniería de Software', id: '1' },
-    { name: 'Computación centrada en Redes', id: '2' },
-    { name: 'Análisis y Modelamiento Numérico', id: '3' },
-    { name: 'Diseño de Algoritmos', id: '4' },
-  ]
-  constructor(private tokenService: TokenService, private router: Router) {
-    this.role = this.tokenService.getUserInfo()?.role
+  constructor(private tokenService: TokenService, private router: Router, private infoService: InfoService) {
+    this.userInfo = this.tokenService.getUserInfo()
+    this.role = this.userInfo?.role
+  }
+
+  ngOnInit(): void {
+    this.infoService.getSections().subscribe((sections) => {
+      console.log('🚀 ~ ngOnInit ~ sections:', sections)
+      this.sections = sections.data
+    })
   }
 
   logout() {
