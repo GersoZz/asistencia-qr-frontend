@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common'
-import { Component, inject } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
 import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router'
+import { SessionDTO } from 'src/app/core/models/info.interface'
+import { InfoService } from 'src/app/core/services/info.service'
 
 @Component({
   selector: 'app-sessions-classroom',
@@ -9,23 +11,41 @@ import { ActivatedRoute, Router, RouterLinkWithHref } from '@angular/router'
   templateUrl: './sessions-classroom.component.html',
   styleUrl: './sessions-classroom.component.css',
 })
-export class SessionsClassroomComponent {
+export class SessionsClassroomComponent implements OnInit {
   private router = inject(Router)
   private route = inject(ActivatedRoute)
 
+  constructor(private infoService: InfoService) {}
+
+  sectionId: string = ''
+  sessions: SessionDTO[] = []
+
   idSessionToRecover: string = ''
 
-  sesiones = [
-    { nombre: 'Sesion 1', fecha: '02/03/2024', tipo: 'A', id: '1' },
-    { nombre: 'Sesion 2', fecha: '05/03/2024', tipo: 'A', id: '2' },
-    { nombre: 'Sesion 3', fecha: '09/03/2024', tipo: 'A', id: '3' },
-    { nombre: 'Sesion 4', fecha: '12/03/2024', tipo: 'C', id: '4' },
-    { nombre: 'Sesion 5', fecha: '16/03/2024', tipo: 'B', id: '5' },
-    { nombre: 'Sesion 6', fecha: '19/03/2024', tipo: 'D', id: '6' },
-    { nombre: 'Sesion 7', fecha: '23/03/2024', tipo: 'D', id: '7' },
+  sesiones: SessionDTO[] = [
+    // { nombre: 'Sesion 1', fecha: new Date(), tipo: 'A', id: '1' },
+    // { nombre: 'Sesion 2', fecha: new Date(), tipo: 'A', id: '2' },
+    // { nombre: 'Sesion 3', fecha: new Date(), tipo: 'A', id: '3' },
+    // { nombre: 'Sesion 4', fecha: new Date(), tipo: 'C', id: '4' },
+    // { nombre: 'Sesion 5', fecha: new Date(), tipo: 'B', id: '5' },
+    // { nombre: 'Sesion 6', fecha: new Date(), tipo: 'D', id: '6' },
+    // { nombre: 'Sesion 7', fecha: new Date(), tipo: 'D', id: '7' },
   ]
 
+  //P: separarlo por semanas 1 hasta 16
+
   mostrarModal = false
+
+  ngOnInit(): void {
+    this.sectionId = this.route.snapshot.paramMap.get('idCurso') || ''
+    console.log('🚀 ~ ngOnInit ~ sectionId:', this.sectionId)
+
+    this.infoService.getSessions(this.sectionId).subscribe((response) => {
+      console.log('🚀 ~ ngOnInit ~ getSessions ~ response:', response)
+      this.sessions = response.data
+      this.sesiones = response.data
+    })
+  }
 
   abrirModal(): void {
     this.mostrarModal = true
@@ -45,17 +65,17 @@ export class SessionsClassroomComponent {
     // C: sesion perdida
     // D: sesion futura
 
-    if (typeSession === 'A') {
+    if (typeSession === 'registrada') {
       this.router.navigate([idSession], { relativeTo: this.route })
       return
     }
 
-    if (typeSession === 'B') {
+    if (typeSession === 'en_curso') {
       this.router.navigate([idSession, 'qr'], { relativeTo: this.route })
       return
     }
 
-    if (typeSession === 'C') {
+    if (typeSession === 'perdida') {
       this.idSessionToRecover = idSession
       this.abrirModal()
       return

@@ -15,11 +15,14 @@
         <h2>Sesiones</h2>
     </div>
     <div class="buttons-container">
-        <button *ngFor="let sesion of sesiones" [class.session-button-a]="sesion.tipo === 'A'"
-            [class.session-button-b]="sesion.tipo === 'B'" [class.session-button-c]="sesion.tipo === 'C'"
-            [class.session-button-d]="sesion.tipo === 'D'" [disabled]="sesion.tipo === 'D'"
-            (click)="handleRedirect(sesion.id, sesion.tipo)">
-            {{ sesion.nombre }} - {{ sesion.fecha }}
+        <button *ngFor="let session of sessions; index as i"
+            [class.session-button-a]="session.sessionState === 'registrada'"
+            [class.session-button-b]="session.sessionState === 'en_curso'"
+            [class.session-button-c]="session.sessionState === 'perdida'"
+            [class.session-button-d]="session.sessionState === 'futura'" [disabled]="session.sessionState === 'futura'"
+            (click)="handleRedirect(session.sessionId, session.sessionState)">
+            {{ 'Sesión ' + (i+1) }} - {{ (session.recoveryDate || session.startTime) | date: 'dd/MM/yyyy h:mm a':'UTC'
+            }}
         </button>
     </div>
 </div>
