@@ -1,29 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistencia UNI</title>
-    <link rel="stylesheet" href="qr-display.component.css" />
-  </head>
-  <body>
-    <div class="container">
-      <a href="../student-menu/student-menu.component.html" class="back-button">&larr;</a>
-      <h1>Asistencia UNI</h1>
+<a routerLink="../../"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+<div class="container">
+  <h1>Asistencia UNI</h1>
 
-      <div class="cuadrado">
-        <div>
-          <span>Total: </span>
-        </div>
-        <div class="button-container">
-          <div class="qr"></div>
-          <button class="button">Ver Registro</button>
-        </div>
-      </div>
-      <h2>Usuario</h2>
-      <div class="usuario">
-        <span>Mateo Lorenzo Torres Fuero</span>
-      </div>
+  <div class="cuadrado">
+    <div>
+      <span>Total: </span>
     </div>
-  </body>
-</html>
+    <div class="button-container">
+      <div class="qr"></div>
+      <a routerLink="../registro"><button class="button">Ver Registro</button></a>
+    </div>
+  </div>
+  <h2>Usuario</h2>
+  <div class="usuario">
+    <span>Mateo Lorenzo Torres Fuero</span>
+  </div>
+</div>

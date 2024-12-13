@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component } from '@angular/core'
+import { RouterLinkWithHref } from '@angular/router'
 
 @Component({
   selector: 'app-scanner',
   standalone: true,
-  imports: [],
+  imports: [RouterLinkWithHref],
   templateUrl: './scanner.component.html',
-  styleUrl: './scanner.component.css'
+  styleUrl: './scanner.component.css',
 })
-export class ScannerComponent {
-
-}
+export class ScannerComponent {}

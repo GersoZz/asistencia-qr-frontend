@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistencia UNI - Login</title>
-    <link rel="stylesheet" href="login.component.css" />
-  </head>
-  <body>
-    <div class="container">
-      <h1>Asistencia UNI</h1>
-      <img src="assets/shield-user-svgrepo-com.svg" alt="Logo" class="logo" />
-      <h2>Login</h2>
-      <button class="google-button">
-        <img src="assets/google-logo.svg" alt="Google Icon" class="google-icon" />
-        Cuenta Google
-      </button>
-    </div>
-  </body>
-</html>
+<div class="container">
+  <h1>Asistencia UNI</h1>
+  <img src="assets/shield-user-svgrepo-com.svg" alt="Logo" class="logo" />
+  <h2>Login</h2>
+  <button class="google-button" (click)="loginWithGoogle()">
+    <img src="assets/google-logo.svg" alt="Google Icon" class="google-icon" />
+    Cuenta Google
+  </button>
+</div>

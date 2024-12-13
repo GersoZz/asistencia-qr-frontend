@@ -1,34 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Asistencia UNI - Ingeniería de Software A</title>
-    <link rel="stylesheet" href="session-history.component.css" />
-  </head>
-  <body>
-    <div class="container">
-      <a href="../login/login.component.html" class="back-button">&larr;</a>
-      <h1>Ingeniería de Software - A</h1>
-      <table class="attendance-table">
-        <thead>
-          <tr>
-            <th>Estudiante</th>
-            <th>Presente</th>
-          </tr>
-        </thead>
-        <tr *ngFor="let registro of registros">
-          <td>a</td>
-          <td>{{ registro.asistencia }}</td>
-        </tr>
-      </table>
+<a routerLink="../"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
 
-      <div class="summary">
-        <span>Total: </span>
-        <!--{{ getAsistencias() }} / {{ registros.length }} -->
-        <span>Fecha: </span>
-        <!-- {{ registro.fecha }} -->
-      </div>
-    </div>
-  </body>
-</html>
+<div class="page-title">
+  <h1>Asistencia UNI</h1>
+</div>
+
+<div class="content">
+  <div class="page-subtitle">
+    <h2>Asistencia</h2>
+  </div>
+  <div class="asistencia-container">
+    <table>
+      <tr>
+        <th>Nombre</th>
+        <th>Asistencia</th>
+      </tr>
+      <tr *ngFor="let estudiante of estudiantes">
+        <td>{{ estudiante.nombre }}</td>
+        <td>{{ estudiante.asistencia }}</td>
+      </tr>
+    </table>
+  </div>
+  <div class="total">
+    <span>Total: {{ getAsistencias() }} / {{ estudiantes.length }}</span>
+    <span>{{ getPorcentajeAsistencias() | number:'1.1-2' }}%</span>
+  </div>
+</div>

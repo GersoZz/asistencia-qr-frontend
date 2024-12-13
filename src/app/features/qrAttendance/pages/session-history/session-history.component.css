@@ -1,19 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
-
-body,
-html {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Inter', sans-serif;
-  background-color: #fff;
-  color: #333;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+.page-title {
+  font-size: clamp(16px, 3vw, 32px);
+  color: #3164f4;
+  text-align: center;
+  margin-top: 8vh;
 }
 
-.container {
+.content {
   display: flex;
   flex-direction: column;
   margin-top: 3vh;
@@ -24,22 +16,14 @@ html {
   align-items: center;
 }
 
-.back-button {
-  display: inline-block;
-  text-decoration: none;
-  font-size: 24px;
-  margin-bottom: 10px;
-  color: #3164f4;
+.page-subtitle {
+  align-self: flex-start;
+  font-size: clamp(15px, 2vw, 32px);
+  color: black;
+  text-align: left;
 }
 
-h1 {
-  font-size: clamp(16px, 3vw, 32px);
-  color: #3164f4;
-  text-align: center;
-  margin-top: 8vh;
-}
-
-.attendance-table {
+.asistencia-container {
   border: 2px solid #3164f4;
   border-radius: 10px;
   width: clamp(285px, 45vw, 700px);
@@ -49,13 +33,13 @@ table {
   width: 100%;
 }
 
-.attendance-table th,
-.attendance-table td {
+th,
+td {
   text-align: center;
   vertical-align: middle;
 }
 
-.summary p {
+.total {
   display: flex;
   justify-content: space-between;
   align-items: center;
