@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  background-color: #fff;
+  color: #333;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+  flex-grow: 1;
+  overflow: auto;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  align-items: center;
+}
+
+.back-button {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #3164f4;
+}
+
+h1 {
+  font-size: clamp(16px, 3vw, 32px);
+  color: #3164f4;
+  text-align: center;
+  margin-top: 8vh;
+}
+
+.attendance-table {
+  border: 2px solid #3164f4;
+  border-radius: 10px;
+  width: clamp(285px, 45vw, 700px);
+}
+
+table {
+  width: 100%;
+}
+
+.attendance-table th,
+.attendance-table td {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.summary p {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 3vh;
+  font-size: clamp(18px, 2vw, 25px);
+  color: #3164f4;
+  font-weight: 600;
+  width: clamp(250px, 30vw, 380px);
+}

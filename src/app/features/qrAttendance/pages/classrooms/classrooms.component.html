@@ -1,19 +1,19 @@
 <a routerLink="/menu" *ngIf="role === 'STUDENT'"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
 
 <div class="page-title">
-    <h1>Asistencia UNI</h1>
+  <h1>Asistencia UNI</h1>
 </div>
 
 <div class="content">
-    <div class="page-subtitle">
-        <h2>Cursos</h2>
-    </div>
-    <div class="buttons-container">
-        <a *ngFor="let curso of cursos" [style.width.%]="80"
-            [routerLink]="role === 'PROFESSOR' ? curso.id+'/sesiones' : '/cursos/'+curso.id">
-            <button class="course-button">{{ curso.name }}</button>
-        </a>
-    </div>
+  <div class="page-subtitle">
+    <h2>Cursos</h2>
+  </div>
+  <div class="buttons-container">
+    <a *ngFor="let curso of cursos" [style.width.%]="80"
+      [routerLink]="role === 'PROFESSOR' ? curso.id+'/sesiones' : '/cursos/'+curso.id">
+      <button class="course-button">{{ curso.name }}</button>
+    </a>
+  </div>
 </div>
 
 <img [style.cursor]="'pointer'" *ngIf="role === 'PROFESSOR'" src="svgs/logout.svg" (click)="logout()" />
