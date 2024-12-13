@@ -4,6 +4,19 @@ import { TokenService } from './token.service'
 import { environment } from '@envs/environment'
 import { ResponseDTO, SectionDTO, SessionDTO } from '../models/info.interface'
 
+interface GetStudentsDTO {
+  success: boolean
+  data: {
+    _id: string
+    students: StudentDTO[]
+  }
+}
+
+export interface StudentDTO {
+  _id: string
+  fullName: string
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -30,6 +43,18 @@ export class InfoService {
     })
 
     return this.http.get<ResponseDTO<SessionDTO>>(`${environment.API_URL}/info/sections/${sectionId}/sessions`, {
+      headers,
+    })
+  }
+
+  getStudentsOfSection(sectionId: string) {
+    const token = this.tokenService.getToken()
+
+    const headers = new HttpHeaders({
+      token: token as string,
+    })
+
+    return this.http.get<GetStudentsDTO>(`${environment.API_URL}/info/sections/${sectionId}/students`, {
       headers,
     })
   }

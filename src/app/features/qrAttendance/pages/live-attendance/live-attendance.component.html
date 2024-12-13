@@ -7,16 +7,15 @@
 <div class="content">
 
     <div class="item-container" *ngFor="let registro of registros">
-        <span class="student-name">{{ registro.nombre }}</span>
+        <span class="student-name">{{ registro.fullName }}</span>
         <div class="switch-container">
-            <input type="checkbox" [checked]="registro.asistencia === 'si'"
-                (change)="updateAsistencia(registro, $event)">
+            <input type="checkbox" [checked]="false" (change)="updateAsistencia(registro, $event)">
 
         </div>
     </div>
-    <div class="total">
+    <!-- <div class="total">
         total : {{ getAsistencias() }}/{{ registros.length }}
-    </div>
+    </div> -->
     <a routerLink="../qr">
         <button class="show-button">
             Mostrar QR
