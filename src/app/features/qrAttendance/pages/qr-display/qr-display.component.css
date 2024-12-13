@@ -23,8 +23,8 @@ h2 {
 }
 
 .cuadrado {
-  width: 250px;
-  height: 350px;
+  width: 350px;
+  height: 450px;
   border-width: 1.5px;
   border-color: #3164f4;
   border-style: solid;
@@ -61,9 +61,13 @@ h2 {
   justify-content: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .qr {
-  width: 180px;
-  height: 180px;
+  width: 250px;
+  height: 250px;
   border-width: 1.5px;
   border-color: #000;
   border-style: solid;

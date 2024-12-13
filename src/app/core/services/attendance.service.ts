@@ -1,0 +1,27 @@
+import { inject, Injectable } from '@angular/core'
+import { TokenService } from './token.service'
+import { environment } from '@envs/environment'
+import { HttpClient, HttpHeaders } from '@angular/common/http'
+
+export interface ResponseQrJWT {
+  success: boolean
+  data: string
+}
+
+@Injectable({
+  providedIn: 'root',
+})
+export class AttendanceService {
+  private http = inject(HttpClient)
+
+  constructor(private tokenService: TokenService) {}
+
+  getQr(sessionId: string) {
+    const token = this.tokenService.getToken()
+    const headers = new HttpHeaders({
+      token: token as string,
+    })
+
+    return this.http.get<ResponseQrJWT>(`${environment.API_URL}/attendance/generate-qr/${sessionId}`, { headers })
+  }
+}
