@@ -7,6 +7,12 @@ export interface ResponseQrJWT {
   success: boolean
   data: string
 }
+export interface ResponseRegisterQr {
+  success: boolean
+  data: {
+    _id: string
+  }
+}
 
 @Injectable({
   providedIn: 'root',
@@ -23,5 +29,14 @@ export class AttendanceService {
     })
 
     return this.http.get<ResponseQrJWT>(`${environment.API_URL}/attendance/generate-qr/${sessionId}`, { headers })
+  }
+
+  registerQr(sessionJWT: string) {
+    const token = this.tokenService.getToken()
+    const headers = new HttpHeaders({
+      token: token as string,
+    })
+
+    return this.http.get<ResponseRegisterQr>(`${environment.API_URL}/attendance/register-qr/${sessionJWT}`, { headers })
   }
 }
