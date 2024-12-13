@@ -9,8 +9,8 @@
     <div class="item-container" *ngFor="let registro of registros">
         <span class="student-name">{{ registro.fullName }}</span>
         <div class="switch-container">
-            <input type="checkbox" [checked]="false" (change)="updateAsistencia(registro, $event)">
-
+            <input type="checkbox" [checked]="attendancesTrue.includes(registro.fullName)"
+                (change)="updateAsistencia(registro, $event)">
         </div>
     </div>
     <!-- <div class="total">

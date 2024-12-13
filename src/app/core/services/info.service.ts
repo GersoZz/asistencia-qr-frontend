@@ -58,4 +58,16 @@ export class InfoService {
       headers,
     })
   }
+
+  getAttendancesOfSession(sessionId: string) {
+    const token = this.tokenService.getToken()
+
+    const headers = new HttpHeaders({
+      token: token as string,
+    })
+
+    return this.http.get<any>(`${environment.API_URL}/attendance/sessions/${sessionId}`, {
+      headers,
+    })
+  }
 }

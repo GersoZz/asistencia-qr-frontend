@@ -23,6 +23,9 @@ export class LiveAttendanceComponent implements OnInit {
     // { nombre: 'Leonardo Chacon', asistencia: 'no' },
   ]
 
+  attendances: any[] = []
+  attendancesTrue: any[] = []
+
   constructor(private route: ActivatedRoute, private infoService: InfoService) {}
 
   ngOnInit(): void {
@@ -35,6 +38,24 @@ export class LiveAttendanceComponent implements OnInit {
     this.infoService.getStudentsOfSection(this.cursoId).subscribe((response) => {
       console.log('🚀 ~ ngOnInit ~ getStudentsOfSection ~ response:', response)
       this.registros = response.data.students
+    })
+
+    this.infoService.getAttendancesOfSession(this.sessionId).subscribe((response) => {
+      console.log('🚀 ~ ngOnInit ~ getAttendancesOfSession ~ response:', response)
+      // this.registros = response.data.students
+      const attendancesStudents = response.data.map((e: any) => {
+        return {
+          state: e.state,
+          fullName: e.student.fullName,
+        }
+      })
+      console.log(
+        '🚀 ~ file: live-attendance.component.ts:46 ~ LiveAttendanceComponent ~ attendancesStudents ~ attendancesStudents:',
+        attendancesStudents,
+      )
+
+      this.attendances = attendancesStudents
+      this.attendancesTrue = attendancesStudents.filter((e: any) => e.state === true).map((e: any) => e.fullName)
     })
   }
 
