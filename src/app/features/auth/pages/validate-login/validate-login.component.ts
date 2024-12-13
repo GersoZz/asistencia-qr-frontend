@@ -18,7 +18,9 @@ export class ValidateLoginComponent implements OnInit {
   constructor() {}
 
   ngOnInit(): void {
-    this.validateLogin()
+    setTimeout(() => {
+      this.validateLogin()
+    }, 1000)
   }
 
   validateLogin() {
