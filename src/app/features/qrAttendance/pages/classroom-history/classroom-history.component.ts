@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component } from '@angular/core'
 import { RouterLinkWithHref } from '@angular/router'
+import { TokenService } from 'src/app/core/services/token.service'
 
 @Component({
   selector: 'app-classroom-history',
@@ -10,7 +11,11 @@ import { RouterLinkWithHref } from '@angular/router'
   styleUrl: './classroom-history.component.css',
 })
 export class ClassroomHistoryComponent {
-  role = 'STUDENT' // STUDENT, PROFESSOR
+  role: string | undefined = ''
+
+  constructor(private tokenService: TokenService) {
+    this.role = this.tokenService.getUserInfo()?.role
+  }
 
   registros = [
     { semana: 'Semana 1', fecha: '20/05/2024', asistencia: 'Sí' },
