@@ -27,4 +27,6 @@
     <span>Total: {{ totalAttendances }} / {{ registros.length }}</span>
     <span>{{ (totalAttendances/ registros.length) * 100 | number:'1.1-2' }}%</span>
   </div>
+
+  <button (click)="downloadCSV()">Download CSV</button>
 </div>

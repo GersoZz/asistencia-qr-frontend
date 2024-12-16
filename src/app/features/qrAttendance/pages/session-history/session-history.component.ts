@@ -23,6 +23,8 @@ export class SessionHistoryComponent implements OnInit {
   attendancesTrue: any[] = []
   totalAttendances: number = 0
 
+  dataForDownload: any[] = []
+
   constructor(private route: ActivatedRoute, private tokenService: TokenService, private infoService: InfoService) {
     this.role = this.tokenService.getUserInfo()?.role
   }
@@ -45,6 +47,7 @@ export class SessionHistoryComponent implements OnInit {
         return {
           state: e.state,
           fullName: e.student.fullName,
+          _id: e.student._id,
         }
       })
       console.log('🚀 ~ attendancesStudents:', attendancesStudents)
@@ -52,6 +55,46 @@ export class SessionHistoryComponent implements OnInit {
       this.attendances = attendancesStudents
       this.attendancesTrue = attendancesStudents.filter((e: any) => e.state === true).map((e: any) => e.fullName)
       this.totalAttendances = this.attendancesTrue.length
+
+      // Mapeo para asistir IDs con el estado de asistencia
+      const attendanceMap = new Map()
+      this.attendances.forEach((entry) => {
+        attendanceMap.set(entry._id, entry.state)
+      })
+
+      // Generación del array resultante
+      const result = this.registros.map((student) => ({
+        fullname: student.fullName,
+        state: attendanceMap.get(student._id) || false,
+      }))
+
+      this.dataForDownload = result
+
+      // Imprime el resultado
+      console.log(result)
     })
+  }
+
+  downloadCSV() {
+    const csvData = this.convertToCSV(this.dataForDownload)
+    const blob = new Blob([csvData], { type: 'text/csv' })
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.setAttribute('hidden', '')
+    a.setAttribute('href', url)
+    a.setAttribute('download', 'data.csv')
+    document.body.appendChild(a)
+    a.click()
+    document.body.removeChild(a)
+  }
+
+  convertToCSV(data: any[]): string {
+    const headers = Object.keys(data[0]).join(',') // Encabezados del CSV
+    const rows = data.map((row) =>
+      Object.values(row)
+        .map((value) => (typeof value === 'string' ? `"${value}"` : value))
+        .join(','),
+    )
+    return [headers, ...rows].join('\r\n') // Genera el string CSV
   }
 }
