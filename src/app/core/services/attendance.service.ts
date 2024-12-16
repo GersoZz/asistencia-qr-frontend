@@ -11,6 +11,7 @@ export interface ResponseRegisterQr {
   success: boolean
   data: {
     _id: string
+    message?: string
   }
 }
 

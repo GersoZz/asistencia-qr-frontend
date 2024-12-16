@@ -63,14 +63,23 @@ export class VideoCaptureComponent {
 
             const qrJWT = item.text
 
-            this.attendanceService.registerQr(qrJWT).subscribe((response) => {
-              console.log('🚀 ~ registerQr ~ response:', response)
+            this.attendanceService.registerQr(qrJWT).subscribe({
+              next: (response) => {
+                console.log('🚀 ~ registerQr ~ response:', response)
 
-              if (response.success === true) {
-                alert('¡Registro exitoso! Codigo: ' + response.data._id)
+                if (response.success === true) {
+                  alert('¡Registro exitoso! Codigo: ' + response.data._id)
 
-                this.resultsContainer!.nativeElement.textContent += '¡Registro exitoso! Codigo: ' + response.data._id
-              }
+                  this.resultsContainer!.nativeElement.textContent += '¡Registro exitoso! Codigo: ' + response.data._id
+                }
+              },
+              error: (error) => {
+                console.log(
+                  '🚀 ~ file: video-capture.component.ts:77 ~ VideoCaptureComponent ~ ngAfterViewInit ~ error:',
+                  error.error,
+                )
+                alert(error.error.data?.message)
+              },
             })
           }
         },
