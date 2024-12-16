@@ -64,6 +64,7 @@ export class GoogleOauthService {
     console.log('🚀 ~ environment.API_URL:', environment.API_URL)
     return this.http.get<AuthResponseDTO>(`${environment.API_URL}/auth/g-oauth`, { headers }).pipe(
       tap((response) => {
+        console.log('🚀 ~ response.data.token:', response.data.token)
         this.tokenSevice.saveToken(response.data.token)
       }),
     )
