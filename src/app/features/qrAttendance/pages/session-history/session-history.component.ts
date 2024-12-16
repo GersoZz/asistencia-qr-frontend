@@ -19,6 +19,8 @@ export class SessionHistoryComponent implements OnInit {
 
   registros: StudentDTO[] = []
 
+  loading = true
+
   attendances: any[] = []
   attendancesTrue: any[] = []
   totalAttendances: number = 0
@@ -38,6 +40,8 @@ export class SessionHistoryComponent implements OnInit {
     this.infoService.getStudentsOfSection(this.cursoId).subscribe((response) => {
       console.log('🚀 ~ ngOnInit ~ getStudentsOfSection ~ response:', response)
       this.registros = response.data.students
+
+      this.loading = false
     })
 
     this.infoService.getAttendancesOfSession(this.sessionId).subscribe((response) => {

@@ -19,6 +19,7 @@ export class ClassroomsComponent implements OnInit {
   role: string | undefined = ''
   userInfo: userInfo | null = null
   sections: SectionDTO[] = []
+  loading = true
 
   constructor(private tokenService: TokenService, private router: Router, private infoService: InfoService) {
     this.userInfo = this.tokenService.getUserInfo()
@@ -30,6 +31,7 @@ export class ClassroomsComponent implements OnInit {
     this.infoService.getSections().subscribe((response) => {
       console.log('🚀 ~ ngOnInit ~ getSections ~ response:', response)
       this.sections = response.data
+      this.loading = false
     })
   }
 

@@ -14,6 +14,10 @@
     <div class="page-subtitle">
         <h2>Sesiones</h2>
     </div>
+    <div class="container-loader" *ngIf="loading">
+        <div class="loader">
+        </div>
+    </div>
     <div class="buttons-container">
         <button *ngFor="let session of sessions; index as i"
             [class.session-button-a]="session.sessionState === 'registrada'"

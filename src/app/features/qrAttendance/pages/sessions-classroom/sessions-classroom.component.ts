@@ -22,15 +22,9 @@ export class SessionsClassroomComponent implements OnInit {
 
   idSessionToRecover: string = ''
 
-  sesiones: SessionDTO[] = [
-    // { nombre: 'Sesion 1', fecha: new Date(), tipo: 'A', id: '1' },
-    // { nombre: 'Sesion 2', fecha: new Date(), tipo: 'A', id: '2' },
-    // { nombre: 'Sesion 3', fecha: new Date(), tipo: 'A', id: '3' },
-    // { nombre: 'Sesion 4', fecha: new Date(), tipo: 'C', id: '4' },
-    // { nombre: 'Sesion 5', fecha: new Date(), tipo: 'B', id: '5' },
-    // { nombre: 'Sesion 6', fecha: new Date(), tipo: 'D', id: '6' },
-    // { nombre: 'Sesion 7', fecha: new Date(), tipo: 'D', id: '7' },
-  ]
+  loading = true
+
+  sesiones: SessionDTO[] = []
 
   //P: separarlo por semanas 1 hasta 16
 
@@ -44,6 +38,7 @@ export class SessionsClassroomComponent implements OnInit {
       console.log('🚀 ~ ngOnInit ~ getSessions ~ response:', response)
       this.sessions = response.data
       this.sesiones = response.data
+      this.loading = false
     })
   }
 

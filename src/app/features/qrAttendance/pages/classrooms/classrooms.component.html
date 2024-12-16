@@ -16,6 +16,11 @@
   <div class="page-subtitle">
     <h2>Cursos</h2>
   </div>
+
+  <div class="container-loader" *ngIf="loading">
+    <div class="loader">
+    </div>
+  </div>
   <div class="buttons-container">
 
     <button *ngFor="let section of sections" (click)="handlerRedirect(section.sectionId)" class="course-button">
