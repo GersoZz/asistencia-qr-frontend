@@ -22,6 +22,7 @@ export class ClassroomsComponent implements OnInit {
 
   constructor(private tokenService: TokenService, private router: Router, private infoService: InfoService) {
     this.userInfo = this.tokenService.getUserInfo()
+    console.log(this.userInfo)
     this.role = this.userInfo?.role
   }
 

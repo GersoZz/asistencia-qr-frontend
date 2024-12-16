@@ -1,3 +1,11 @@
+<div class="header">
+  <div *ngIf="role === 'PROFESSOR'">
+    {{this.userInfo?.role}}: {{this.userInfo?.fullName}}
+  </div>
+
+  <img [style.cursor]="'pointer'" *ngIf="role === 'PROFESSOR'" src="svgs/logout.svg" (click)="logout()" />
+</div>
+
 <a routerLink="/menu" *ngIf="role === 'STUDENT'"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
 
 <div class="page-title">
@@ -16,5 +24,3 @@
 
   </div>
 </div>
-
-<img [style.cursor]="'pointer'" *ngIf="role === 'PROFESSOR'" src="svgs/logout.svg" (click)="logout()" />
