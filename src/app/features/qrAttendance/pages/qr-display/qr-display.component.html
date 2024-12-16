@@ -1,1 +1,20 @@
-<p>qr-display works!</p>
+<a routerLink="../../"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+<div class="container">
+  <h1>Asistencia UNI</h1>
+
+  <div class="cuadrado">
+    <div>
+      <span>Total: </span>
+    </div>
+    <div class="button-container">
+      <div class="qr">
+        <qrcode [qrdata]="sessionQR" [width]="200" [errorCorrectionLevel]="'M'"></qrcode>
+      </div>
+      <a routerLink="../registro"><button class="button">Ver Registro</button></a>
+    </div>
+  </div>
+  <h2>Usuario</h2>
+  <div class="usuario">
+    <span>Mateo Lorenzo Torres Fuero</span>
+  </div>
+</div>

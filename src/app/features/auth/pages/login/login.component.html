@@ -1,6 +1,19 @@
-<p>login works!</p>
+<div class="container">
+  <h1>Asistencia UNI</h1>
+  <img src="assets/shield-user-svgrepo-com.svg" alt="Logo" class="logo" />
+  <h2>Login</h2>
+  <button class="google-button" (click)="loginWithGoogle()">
+    <img src="assets/google-logo.svg" alt="Google Icon" class="google-icon" />
+    Cuenta Google
+  </button>
 
-<button (click)="loginWithGoogle()">
-  <app-google-icon></app-google-icon>
-  Sign in Google
-</button>
+</div>
+<div class="container-demo-buttons">
+  <button class="demo-buttons" (click)="loginWithStudentDemo()">
+    Ingresar con cuenta STUDENT (DEMO)
+  </button>
+
+  <button class="demo-buttons" (click)="loginWithProfessorDemo()">
+    Ingresar con cuenta PROFESSOR (DEMO)
+  </button>
+</div>

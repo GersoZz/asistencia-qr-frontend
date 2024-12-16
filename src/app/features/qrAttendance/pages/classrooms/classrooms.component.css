@@ -1,0 +1,99 @@
+.container-loader {
+  display: flex;
+  margin-left: 5vh;
+  margin-right: 5vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.loader {
+  --r1: 154%;
+  --r2: 68.5%;
+  width: 40vh;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%),
+    radial-gradient(var(--r1) var(--r2) at bottom, #269af2 79.5%, #0000 80%),
+    radial-gradient(var(--r1) var(--r2) at top, #0000 79.5%, #269af2 80%), #ccc;
+  background-size: 50.5% 220%;
+  background-position: -100% 0%, 0% 0%, 100% 0%;
+  background-repeat: no-repeat;
+  animation: l9 2s infinite linear;
+}
+@keyframes l9 {
+  33% {
+    background-position: 0% 33%, 100% 33%, 200% 33%;
+  }
+  66% {
+    background-position: -100% 66%, 0% 66%, 100% 66%;
+  }
+  100% {
+    background-position: 0% 100%, 100% 100%, 200% 100%;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 3vh;
+  font-size: clamp(18px, 2vw, 25px);
+  color: #3164f4;
+  font-weight: 600;
+}
+
+.page-title {
+  font-size: clamp(16px, 3vw, 32px);
+  color: #3164f4;
+  text-align: center;
+  margin-top: 10vh;
+}
+
+.content {
+  margin-top: 5vh;
+  flex-grow: 1;
+  overflow: auto;
+  margin-left: 7vh;
+  margin-right: 7vh;
+  align-items: center;
+}
+
+.page-subtitle {
+  font-size: clamp(16px, 2.5vw, 32px);
+  color: black;
+  text-align: left;
+}
+
+.buttons-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 3vh;
+  flex-grow: 1;
+  overflow: auto;
+  margin-left: 1.2vh;
+  margin-right: 1.2vh;
+  align-items: center;
+}
+
+.course-button {
+  background-color: #ffffff;
+  color: black;
+  border: 2px solid #3164f4;
+  border-radius: 10px;
+  padding: 10px 20px;
+  margin: 1vh;
+  font-size: 2.3vw;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.3s;
+  width: 80%;
+}
+
+button:hover {
+  background-color: #3164f4;
+  color: white;
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.95);
+}

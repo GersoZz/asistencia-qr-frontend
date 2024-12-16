@@ -1,1 +1,14 @@
-<p>student-menu works!</p>
+<div class="header">
+    {{this.userInfo?.role}}: {{this.userInfo?.fullName}}
+
+    <img [style.cursor]="'pointer'" src="svgs/logout.svg" (click)="logout()" />
+</div>
+
+<div class="page-title">
+    <h1>Asistencia UNI</h1>
+</div>
+
+<div class="content">
+    <a routerLink="/cursos"><button class="button">Historial</button></a>
+    <a routerLink="/scanner"><button class="button">Escanear</button></a>
+</div>

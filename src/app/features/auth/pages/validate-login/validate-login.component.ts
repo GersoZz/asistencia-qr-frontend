@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core'
+import { Component, inject, OnInit } from '@angular/core'
 import { GoogleOauthService } from '../../services/google-oauth.service'
 import { CommonModule } from '@angular/common'
 import { Router } from '@angular/router'
@@ -10,31 +10,40 @@ import { Router } from '@angular/router'
   templateUrl: './validate-login.component.html',
   styleUrl: './validate-login.component.css',
 })
-export class ValidateLoginComponent {
+export class ValidateLoginComponent implements OnInit {
   private googleOAuthService = inject(GoogleOauthService)
   private router = inject(Router)
   isLoading: boolean = true
 
-  // En el constructor se puede hacer fetch ?
-  constructor() {
-    this.validateLogin()
+  constructor() {}
+
+  ngOnInit(): void {
+    setTimeout(() => {
+      this.validateLogin()
+    }, 1000)
   }
 
   validateLogin() {
     this.googleOAuthService.loginWithBackend().subscribe({
       next: (response) => {
         console.log('Response from backend:', response)
-        // Redirige según la respuesta del backend
-        // if (response?.redirectTo === 'menu') {
-        //   this.router.navigate(['/menu'])
-        // } else if (response?.redirectTo === 'cursos') {
-        //   this.router.navigate(['/cursos'])
-        // } else {
-        //   // Manejo de casos inesperados, por ejemplo, un error o estado no válido
-        //   console.error('Invalid response from backend:', response)
-        //   // muestra un pop up de error con boton a login
-        // }
-        this.router.navigate(['/cursos']) //P: Temporal
+        console.log('Role: ', response.data.userInfo.role)
+
+        const role = response.data.userInfo.role
+
+        // Redirige según el rol que tenga el usuario
+        if (role === 'STUDENT') {
+          this.router.navigate(['/menu'])
+          return
+        }
+
+        if (role === 'PROFESSOR') {
+          this.router.navigate(['/cursos'])
+          return
+        }
+        // Manejo de casos inesperados, por ejemplo, un error o estado no válido
+        console.error('Invalid response from backend:', response)
+        // muestra un pop up de error con boton a login
       },
       error: (error) => {
         console.error('Error during login:', error)

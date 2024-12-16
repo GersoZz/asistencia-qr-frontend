@@ -2,6 +2,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { inject, Injectable } from '@angular/core'
 import { AuthConfig, OAuthService } from 'angular-oauth2-oidc'
 import { environment } from '@envs/environment'
+import { AuthResponseDTO } from 'src/app/core/models/authDTO.interface'
+import { tap } from 'rxjs'
+import { TokenService } from 'src/app/core/services/token.service'
 
 @Injectable({
   providedIn: 'root',
@@ -9,7 +12,7 @@ import { environment } from '@envs/environment'
 export class GoogleOauthService {
   private http = inject(HttpClient)
 
-  constructor(private oauthService: OAuthService) {
+  constructor(private oauthService: OAuthService, private tokenSevice: TokenService) {
     this.initLogin()
   }
   initLogin() {
@@ -51,12 +54,19 @@ export class GoogleOauthService {
   loginWithBackend() {
     const accessToken = this.oauthService.getAccessToken()
     console.log('🚀 ~ GoogleOauthService ~ loginWithBackend ~ accessToken:', accessToken)
+    const data = this.oauthService.getIdentityClaims()
+    console.log('🚀🚀🚀🚀🚀 ~ file: google-oauth.service.ts:58 ~ GoogleOauthService ~ loginWithBackend ~ data:', data)
 
     const headers = new HttpHeaders({
       token: accessToken,
     })
 
     console.log('🚀 ~ environment.API_URL:', environment.API_URL)
-    return this.http.get(`${environment.API_URL}/auth/g-oauth`, { headers })
+    return this.http.get<AuthResponseDTO>(`${environment.API_URL}/auth/g-oauth`, { headers }).pipe(
+      tap((response) => {
+        console.log('🚀 ~ response.data.token:', response.data.token)
+        this.tokenSevice.saveToken(response.data.token)
+      }),
+    )
   }
 }

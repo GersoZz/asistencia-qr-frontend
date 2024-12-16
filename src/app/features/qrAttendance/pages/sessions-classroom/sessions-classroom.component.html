@@ -1,1 +1,42 @@
-<p>sessions-classroom works!</p>
+<a routerLink="../../"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+
+<div class="page-title">
+    <h1>Asistencia UNI</h1>
+</div>
+
+<div class="content">
+    <button class="estadisticas-container">
+        <a routerLink="../"><img src="images/stats.png" alt="Estadísticas"></a>
+        <div class="page-subtitle">
+            <h2>Estadísticas</h2>
+        </div>
+    </button>
+    <div class="page-subtitle">
+        <h2>Sesiones</h2>
+    </div>
+    <div class="container-loader" *ngIf="loading">
+        <div class="loader">
+        </div>
+    </div>
+    <div class="buttons-container">
+        <button *ngFor="let session of sessions; index as i"
+            [class.session-button-a]="session.sessionState === 'registrada'"
+            [class.session-button-b]="session.sessionState === 'en_curso'"
+            [class.session-button-c]="session.sessionState === 'perdida'"
+            [class.session-button-d]="session.sessionState === 'futura'" [disabled]="session.sessionState === 'futura'"
+            (click)="handleRedirect(session.sessionId, session.sessionState)">
+            {{ 'Sesión ' + (i+1) }} - {{ (session.recoveryDate || session.startTime) | date: 'dd/MM/yyyy h:mm a':'UTC'
+            }}
+        </button>
+    </div>
+</div>
+
+<div class="modal-overlay" *ngIf="mostrarModal">
+    <div class="modal-content">
+        <h2>¿Desea recuperar la clase en este momento?</h2>
+        <div class="modal-buttons">
+            <button (click)="recoverSession()">Sí</button>
+            <button (click)="cerrarModal()">No</button>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,24 @@
-<p>live-attendance works!</p>
+<a routerLink="../qr"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+
+<div class="page-title">
+    <h1>Asistencia UNI</h1>
+</div>
+
+<div class="content">
+
+    <div class="item-container" *ngFor="let registro of registros">
+        <span class="student-name">{{ registro.fullName }}</span>
+        <div class="switch-container">
+            <input type="checkbox" [checked]="attendancesTrue.includes(registro.fullName)"
+                (change)="updateAsistencia(registro._id, $event)">
+        </div>
+    </div>
+    <div class="total">
+        total : {{ totalAttendances }}/{{ registros.length }}
+    </div>
+    <a routerLink="../qr">
+        <button class="show-button">
+            Mostrar QR
+        </button>
+    </a>
+</div>

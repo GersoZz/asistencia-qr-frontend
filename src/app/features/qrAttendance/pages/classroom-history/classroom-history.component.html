@@ -1,1 +1,30 @@
-<p>classroom-history works!</p>
+<a routerLink="./sesiones" *ngIf="role === 'PROFESSOR'"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+<a routerLink="/cursos" *ngIf="role === 'STUDENT'"><img src="svgs/arrow-left.svg" class="arrow-left" /></a>
+
+<div class="page-title">
+    <h1>Asistencia UNI</h1>
+</div>
+
+<div class="content">
+    <div class="page-subtitle">
+        <h2>Asistencia</h2>
+    </div>
+    <div class="asistencia-container">
+        <table>
+            <tr>
+                <th>Semana</th>
+                <th>Fecha</th>
+                <th>Asistencia</th>
+            </tr>
+            <tr *ngFor="let registro of registros">
+                <td>{{ registro.semana }}</td>
+                <td>{{ registro.fecha }}</td>
+                <td>{{ registro.asistencia }}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="total">
+        <span>Total: {{ getAsistencias() }} / {{ registros.length }}</span>
+        <span>{{ getPorcentajeAsistencias() | number:'1.1-2' }}%</span>
+    </div>
+</div>
