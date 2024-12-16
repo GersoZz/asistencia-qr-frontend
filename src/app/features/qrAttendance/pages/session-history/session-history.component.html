@@ -9,19 +9,22 @@
     <h2>Asistencia</h2>
   </div>
   <div class="asistencia-container">
+    <!-- nro sesion -->
     <table>
       <tr>
+        <th>#</th>
         <th>Nombre</th>
         <th>Asistencia</th>
       </tr>
-      <tr *ngFor="let estudiante of estudiantes">
-        <td>{{ estudiante.nombre }}</td>
-        <td>{{ estudiante.asistencia }}</td>
+      <tr *ngFor="let registro of registros, index as i">
+        <td>{{ i + 1 }}</td>
+        <td>{{ registro.fullName }}</td>
+        <td>{{ attendancesTrue.includes(registro.fullName) ? 'Sí' : 'No' }}</td>
       </tr>
     </table>
   </div>
   <div class="total">
-    <span>Total: {{ getAsistencias() }} / {{ estudiantes.length }}</span>
-    <span>{{ getPorcentajeAsistencias() | number:'1.1-2' }}%</span>
+    <span>Total: {{ totalAttendances }} / {{ registros.length }}</span>
+    <span>{{ (totalAttendances/ registros.length) * 100 | number:'1.1-2' }}%</span>
   </div>
 </div>

@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
-import { Component } from '@angular/core'
-import { RouterLinkWithHref } from '@angular/router'
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute, RouterLinkWithHref } from '@angular/router'
+import { InfoService, StudentDTO } from 'src/app/core/services/info.service'
 import { TokenService } from 'src/app/core/services/token.service'
 
 @Component({
@@ -10,29 +11,47 @@ import { TokenService } from 'src/app/core/services/token.service'
   templateUrl: './session-history.component.html',
   styleUrl: './session-history.component.css',
 })
-export class SessionHistoryComponent {
+export class SessionHistoryComponent implements OnInit {
   role: string | undefined = ''
 
-  constructor(private tokenService: TokenService) {
+  sessionId: string = ''
+  cursoId: string = ''
+
+  registros: StudentDTO[] = []
+
+  attendances: any[] = []
+  attendancesTrue: any[] = []
+  totalAttendances: number = 0
+
+  constructor(private route: ActivatedRoute, private tokenService: TokenService, private infoService: InfoService) {
     this.role = this.tokenService.getUserInfo()?.role
   }
+  ngOnInit(): void {
+    this.sessionId = this.route.snapshot.paramMap.get('idSesion') || ''
+    console.log('🚀 ~ QrDisplayComponent ~ sessionId:', this.sessionId)
 
-  estudiantes = [
-    { nombre: 'Nombre 1', asistencia: 'Sí' },
-    { nombre: 'Nombre 2', asistencia: 'No' },
-    { nombre: 'Nombre 3', asistencia: 'Sí' },
-    { nombre: 'Nombre 4', asistencia: 'Sí' },
-    { nombre: 'Nombre 5', asistencia: 'Sí' },
-    { nombre: 'Nombre 6', asistencia: 'Sí' },
-    { nombre: 'Nombre 7', asistencia: 'Sí' },
-    { nombre: 'Nombre 8', asistencia: 'Sí' },
-  ]
+    this.cursoId = this.route.snapshot.paramMap.get('idCurso') || ''
+    console.log('🚀 ~ QrDisplayComponent ~ cursoId:', this.cursoId)
 
-  getAsistencias(): number {
-    return this.estudiantes.filter((registro) => registro.asistencia === 'Sí').length
-  }
+    this.infoService.getStudentsOfSection(this.cursoId).subscribe((response) => {
+      console.log('🚀 ~ ngOnInit ~ getStudentsOfSection ~ response:', response)
+      this.registros = response.data.students
+    })
 
-  getPorcentajeAsistencias(): number {
-    return (this.getAsistencias() / this.estudiantes.length) * 100
+    this.infoService.getAttendancesOfSession(this.sessionId).subscribe((response) => {
+      console.log('🚀 ~ ngOnInit ~ getAttendancesOfSession ~ response:', response)
+      // this.registros = response.data.students
+      const attendancesStudents = response.data.map((e: any) => {
+        return {
+          state: e.state,
+          fullName: e.student.fullName,
+        }
+      })
+      console.log('🚀 ~ attendancesStudents:', attendancesStudents)
+
+      this.attendances = attendancesStudents
+      this.attendancesTrue = attendancesStudents.filter((e: any) => e.state === true).map((e: any) => e.fullName)
+      this.totalAttendances = this.attendancesTrue.length
+    })
   }
 }
