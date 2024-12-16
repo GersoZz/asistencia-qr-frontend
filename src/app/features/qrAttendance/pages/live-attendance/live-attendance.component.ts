@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit } from '@angular/core'
 import { ActivatedRoute, RouterLinkWithHref } from '@angular/router'
+import { AttendanceService } from 'src/app/core/services/attendance.service'
 import { InfoService, StudentDTO } from 'src/app/core/services/info.service'
 
 @Component({
@@ -14,19 +15,17 @@ export class LiveAttendanceComponent implements OnInit {
   sessionId: string = ''
   cursoId: string = ''
 
-  registros: StudentDTO[] = [
-    // { nombre: 'Ariana Camila Lopez Julcarima', asistencia: 'no' },
-    // { nombre: 'Mateo Torres', asistencia: 'si' },
-    // { nombre: 'Benjamin Seminario', asistencia: 'no' },
-    // { nombre: 'Gerson Zuñiga', asistencia: 'no' },
-    // { nombre: 'Jhiens Guerrero', asistencia: 'no' },
-    // { nombre: 'Leonardo Chacon', asistencia: 'no' },
-  ]
+  registros: StudentDTO[] = []
 
   attendances: any[] = []
   attendancesTrue: any[] = []
+  totalAttendances: number = 0
 
-  constructor(private route: ActivatedRoute, private infoService: InfoService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private infoService: InfoService,
+    private attendanceService: AttendanceService,
+  ) {}
 
   ngOnInit(): void {
     this.sessionId = this.route.snapshot.paramMap.get('idSesion') || ''
@@ -56,17 +55,38 @@ export class LiveAttendanceComponent implements OnInit {
 
       this.attendances = attendancesStudents
       this.attendancesTrue = attendancesStudents.filter((e: any) => e.state === true).map((e: any) => e.fullName)
+      this.totalAttendances = this.attendancesTrue.length
     })
   }
 
-  // traigo las asistencias de la sesion
+  updateAsistencia(userId: any, event: Event) {
+    const element = event.target as HTMLInputElement
+    element.disabled = true
 
-  // getAsistencias(): number {
-  //   return this.registros.filter((registro) => registro.asistencia === 'si').length
-  // }
+    const isChecked = element.checked
 
-  updateAsistencia(registro: any, event: Event) {
-    const isChecked = (event.target as HTMLInputElement).checked
-    registro.asistencia = isChecked ? 'si' : 'no'
+    console.log('🚀 ~ file: ~ isChecked:', isChecked)
+    console.log('🚀 ~ file: ~ registro:', userId)
+
+    this.attendanceService.updateAttendance(this.sessionId, userId, isChecked).subscribe(
+      (response) => {
+        console.log('🚀 ~ file: ~ updateAsistencia ~ response:', response)
+
+        if (response.success) {
+          element.checked = isChecked
+
+          if (isChecked) this.totalAttendances++
+          else this.totalAttendances--
+        } else {
+          element.checked = !isChecked
+        }
+        element.disabled = false
+      },
+      (error) => {
+        console.log('🚀 ~ file: ~ updateAsistencia ~ error:', error)
+        element.checked = !isChecked
+        element.disabled = false
+      },
+    )
   }
 }

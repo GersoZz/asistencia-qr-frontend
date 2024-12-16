@@ -40,4 +40,21 @@ export class AttendanceService {
 
     return this.http.get<ResponseRegisterQr>(`${environment.API_URL}/attendance/register-qr/${sessionJWT}`, { headers })
   }
+
+  updateAttendance(sessionId: string, studentId: string, attendance: boolean) {
+    const token = this.tokenService.getToken()
+
+    const headers = new HttpHeaders({
+      token: token as string,
+    })
+
+    const body = {
+      studentId,
+      state: attendance,
+    }
+
+    return this.http.post<ResponseQrJWT>(`${environment.API_URL}/attendance/sessions/${sessionId}/student`, body, {
+      headers,
+    })
+  }
 }
